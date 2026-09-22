@@ -1,17 +1,31 @@
 # Hola, soy Liz 💕
 
-### Diseñadora Web · Paid Media · Social Media
+### Diseño y desarrollo web · Paid Media · Social Media
 
-Combino diseño y estrategia digital para ayudar a las marcas a conectar con su audiencia y convertir visitas en oportunidades.
+Combino diseño, tecnología y marketing para crear sitios web y campañas orientadas a generar oportunidades de negocio.
 
-Me enfoco en crear experiencias web intuitivas, campañas publicitarias con objetivos claros y contenido que mantenga una identidad coherente en cada canal.
+He trabajado con marcas de SaaS, bienes raíces, gastronomía, hotelería, retail y servicios legales, conectando su presencia digital con objetivos de captación, reservas y ventas.
 
-### Lo que hago
+### Qué hago
 
-* **Diseño web:** sitios y landing pages que equilibran estética, funcionalidad y conversión.
-* **Paid Media:** planificación, gestión y optimización de campañas digitales.
-* **Social Media:** estrategia de contenido, diseño visual y comunicación de marca.
+* **Diseño y desarrollo web:** sitios y landing pages con WordPress, Elementor, Nuxt, Vue y Sanity.
+* **Paid Media:** campañas en Meta Ads, LinkedIn Ads y Google Ads.
+* **Social Media:** estrategia de contenido, dirección creativa y gestión de redes.
+* **Email marketing y CRM:** campañas en Brevo, flujos en Zoho CRM e integraciones con Zapier.
+* **Analítica y optimización:** seguimiento de resultados para mejorar campañas y experiencias digitales.
+
+### Herramientas y tecnologías
+
+**Web:** HTML · CSS · WordPress · Elementor Pro · Nuxt · Vue · Sanity · Git · GitHub · GitLab
+
+**Marketing:** Meta Ads · LinkedIn Ads · Google Ads · Google Analytics · Brevo · Zoho CRM · Zapier
+
+### Proyectos web
+
+* [Conservatorio](https://conservatoriosa.com) — Sitio en Elementor, landing pages con Nuxt, Vue y Sanity, formularios e integraciones.
+* [Calasol](https://calasol.com) — Diseño y desarrollo web con WordPress y Elementor.
 
 ### Mi enfoque
 
-Diseñar con intención. Comunicar con claridad. Medir para mejorar.
+Crear experiencias claras, cuidar cada detalle visual y conectar el diseño con resultados medibles.
+
