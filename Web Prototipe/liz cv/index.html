@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lizbeth Velázquez — Digital Marketing Assistant. Experience in paid media, social media, email marketing, CRM workflows and web projects.">
+  <meta name="theme-color" content="#64518a">
+  <title>Lizbeth Velázquez — CV</title>
+  <script>
+    // Dentro del escritorio Liz (iframe) usa la fuente del escritorio; abierto solo, queda igual.
+    if (window.self !== window.top) document.documentElement.classList.add('in-liz');
+  </script>
+  <style>
+    :root { --ink: #292633; --muted: #645f70; --accent: #68518b; --line: #e4dfea; --soft: #f5f2f8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #eeecf1; color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:hover { color: var(--accent); }
+    a:focus-visible, button:focus-visible { outline: 3px solid #9977bd; outline-offset: 5px; }
+    .toolbar { max-width: 1020px; margin: 25px auto 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 4px; }
+    .toolbar span { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .18em; }
+    button { display: inline-flex; align-items: center; gap: 9px; border: 1px solid #d6cddf; border-radius: 7px; background: #fff; padding: 10px 15px; color: var(--ink); font: inherit; font-size: 12px; cursor: pointer; }
+    button:hover { background: var(--soft); border-color: var(--accent); }
+    button svg { width: 16px; height: 16px; }
+    .resume { max-width: 1020px; margin: 0 auto 48px; background: #fff; border-top: 6px solid var(--accent); box-shadow: 0 12px 55px #3424450c; }
+    .masthead { display: grid; grid-template-columns: 140px minmax(0, 1fr); column-gap: 28px; padding: 49px 56px 32px; }
+    .portrait { grid-column: 1; grid-row: 1 / 4; align-self: center; width: 140px; height: 140px; border-radius: 50%; object-fit: cover; object-position: center; border: 4px solid var(--soft); }
+    .masthead > .eyebrow, .masthead > h1, .masthead > .role { grid-column: 2; }
+    .masthead > .eyebrow { grid-row: 1; }
+    .masthead > h1 { grid-row: 2; }
+    .masthead > .role { grid-row: 3; }
+    .masthead > .contact { grid-column: 1 / -1; grid-row: 4; margin-top: 16px; }
+    .eyebrow { margin: 0 0 14px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .23em; text-transform: uppercase; }
+    h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: clamp(40px, 6.5vw, 64px); line-height: 1.12; letter-spacing: -.045em; }
+    .role { margin: 15px 0 23px; color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; }
+    .contact { display: flex; flex-wrap: wrap; gap: 8px 24px; font-style: normal; color: var(--muted); font-size: 12px; }
+    .contact a { text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+    .contact-item { display: inline-flex; align-items: center; gap: 7px; overflow-wrap: anywhere; }
+    .contact svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--accent); }
+    .profile { margin: 0 56px; padding: 26px 0 28px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    h2 { display: flex; align-items: center; gap: 12px; margin: 0 0 17px; color: var(--accent); font-size: 11px; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
+    .profile p { margin: 0; font-size: 14px; line-height: 1.8; color: #504a5b; }
+    .columns { display: grid; grid-template-columns: minmax(0, 1fr) 265px; gap: 38px; padding: 31px 56px 38px; }
+    .main-column, aside { min-width: 0; }
+    aside { padding-left: 27px; border-left: 1px solid var(--line); }
+    section + section { margin-top: 30px; }
+    article + article { margin-top: 27px; padding-top: 25px; border-top: 1px solid var(--line); }
+    h3 { margin: 0 0 4px; font-size: 16px; line-height: 1.4; font-weight: 650; letter-spacing: -.015em; }
+    .company { margin: 0; color: var(--accent); font-size: 13px; font-weight: 600; }
+    .date { display: block; margin: 3px 0 13px; color: var(--muted); font-size: 11px; letter-spacing: .025em; }
+    ul { margin: 0; padding-left: 16px; }
+    li { padding-left: 3px; margin-bottom: 8px; }
+    li::marker { color: #a18ab9; font-size: .8em; }
+    .experience ul { font-size: 12.5px; line-height: 1.7; color: #504a5b; }
+    .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 22px; list-style: none; padding: 0; color: #504a5b; font-size: 12px; }
+    .skills li { position: relative; margin: 0; padding-left: 13px; }
+    .skills li::before { content: ""; position: absolute; width: 4px; height: 4px; background: #a18ab9; top: .7em; left: 0; border-radius: 50%; }
+    .results { padding: 20px; margin-left: -1px; background: var(--soft); border-radius: 3px; }
+    .results h2 { margin-bottom: 14px; }
+    .results ul { font-size: 12px; line-height: 1.7; }
+    .results li:last-child, .platforms li:last-child { margin-bottom: 0; }
+    .project + .project { margin-top: 18px; padding-top: 18px; }
+    .project h3 { font-size: 13px; }
+    .project a { color: var(--accent); font-size: 11.5px; }
+    .project p { margin: 7px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .platforms { list-style: none; padding: 0; color: var(--muted); font-size: 12px; }
+    .platforms li { margin-bottom: 5px; padding: 0; }
+    .languages { margin: 0; font-size: 12px; }
+    .languages div { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+    .languages div:last-child { border: 0; }
+    .languages dd { margin: 0; color: var(--muted); }
+    .footer { display: flex; justify-content: space-between; gap: 12px; margin: 0 56px; padding: 17px 0 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+    @font-face { font-family: 'Liz'; src: url(../fonts/emuos.woff2) format('woff2'), url(../fonts/emuos.woff) format('woff'), url(../fonts/emuos.ttf) format('truetype'); font-display: swap; }
+    .in-liz body, .in-liz button, .in-liz h1 { font-family: 'Liz', 'Microsoft Sans Serif', Tahoma, sans-serif; }
+    .in-liz body { -webkit-font-smoothing: auto; }
+    .in-liz h1 { letter-spacing: -.01em; }
+    @media (max-width: 720px) {
+      .toolbar { margin: 16px 20px; }
+      .toolbar span { font-size: 9px; }
+      .resume { margin-bottom: 0; }
+      .masthead { grid-template-columns: 90px minmax(0, 1fr); column-gap: 18px; padding: 33px 26px 26px; }
+      .masthead > .eyebrow { font-size: 8px; letter-spacing: .12em; margin-bottom: 9px; }
+      h1 { font-size: clamp(27px, 6vw, 42px); }
+      .portrait { grid-column: 1; grid-row: 1 / 4; width: 90px; height: 90px; margin-bottom: 0; }
+      .role { font-size: 10px; line-height: 1.6; letter-spacing: .08em; margin: 10px 0 0; }
+      .contact { flex-direction: column; gap: 10px; }
+      .profile { margin: 0 26px; padding: 23px 0; }
+      .columns { grid-template-columns: 1fr; padding: 26px; gap: 30px; }
+      aside { border-left: 0; border-top: 1px solid var(--line); padding: 27px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+      aside section + section { margin: 0; }
+      .footer { margin: 0 26px; }
+    }
+    @media (max-width: 420px) {
+      aside, .skills { grid-template-columns: 1fr; }
+      .footer { font-size: 8px; letter-spacing: .06em; }
+    }
+    @page { size: A4; margin: 10mm; }
+    @media print {
+      body { background: #fff; font-size: 10pt; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .toolbar { display: none; }
+      .resume { max-width: none; margin: 0; box-shadow: none; border-top-width: 4px; }
+      .masthead { grid-template-columns: 100px minmax(0, 1fr); column-gap: 20px; padding: 20px 20px 18px; }
+      .portrait { grid-column: 1; grid-row: 1 / 4; width: 100px; height: 100px; margin-bottom: 0; border-width: 3px; }
+      .eyebrow { font-size: 8px; margin-bottom: 9px; }
+      h1 { font-size: 43px; }
+      .role { font-size: 10px; margin: 10px 0 14px; }
+      .contact { flex-direction: row; font-size: 9px; gap: 7px 15px; }
+      .contact svg { width: 11px; height: 11px; }
+      .profile { margin: 0 20px; padding: 16px 0; }
+      .profile p { font-size: 10px; line-height: 1.65; }
+      h2 { font-size: 9px; margin-bottom: 12px; }
+      .columns { display: grid; grid-template-columns: minmax(0, 1fr) 190px; padding: 20px 20px 18px; gap: 24px; }
+      aside { display: block; border-top: 0; border-left: 1px solid var(--line); padding: 0 0 0 20px; }
+      section + section, aside section + section { margin-top: 23px; }
+      h3 { font-size: 12px; }
+      .company { font-size: 10px; }
+      .date { font-size: 9px; margin-bottom: 9px; }
+      .experience ul { font-size: 9.5px; line-height: 1.6; }
+      li { margin-bottom: 6px; }
+      article + article { margin-top: 19px; padding-top: 18px; }
+      .skills { grid-template-columns: 1fr 1fr; gap: 6px 13px; font-size: 9px; }
+      .results { padding: 14px; }
+      .results ul, .project p, .platforms, .languages { font-size: 9px; }
+      .project h3 { font-size: 10px; }
+      .project a { font-size: 9px; }
+      .footer { margin: 0 20px; padding: 12px 0 0; font-size: 7px; }
+      article, .results, .project, .languages { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+      p, li { orphans: 2; widows: 2; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span>Curriculum vitae</span>
+    <button type="button" onclick="window.print()" lang="es" aria-label="Imprimir o guardar el currículum como PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/><path d="M16 11h1"/></svg>
+      Imprimir / Guardar PDF
+    </button>
+  </div>
+  <main class="resume">
+    <header class="masthead">
+      <img class="portrait" src="Liz-cv-picture.png" alt="Retrato de Lizbeth Velázquez" width="140" height="140">
+      <p class="eyebrow">Marketing · Strategy · Digital experiences</p>
+      <h1>Lizbeth Velázquez</h1>
+      <p class="role">Digital Marketing Assistant</p>
+      <address class="contact">
+        <a class="contact-item" href="tel:+541134779295"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m8 3 3 5-3 3c1.5 2.5 2.5 3.5 5 5l3-3 5 3c-1 5-4 6-9 3S2 9 3 5c.5-2 3-3 5-2Z"/></svg>+54 11 3477 9295</a>
+        <a class="contact-item" href="mailto:lizbethvelazquezest@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>lizbethvelazquezest@gmail.com</a>
+        <span class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Capital Federal, CABA 1030</span>
+      </address>
+    </header>
+    <section class="profile" aria-labelledby="profile-heading">
+      <h2 id="profile-heading">Personal profile</h2>
+      <p>Digital marketing professional with 6+ years of experience in social media, paid advertising, email marketing, CRM workflows, B2B outreach, and web projects. Experienced across SaaS, real estate, hospitality, restaurant, retail, and legal services, with a focus on qualified leads, audience growth, reservations, and sales.</p>
+    </section>
+    <div class="columns">
+      <div class="main-column">
+        <section class="experience" aria-labelledby="experience-heading">
+          <h2 id="experience-heading">Work experience</h2>
+          <article>
+            <h3>Marketing Manager</h3>
+            <p class="company">Viral Connections</p>
+            <span class="date">Apr 2018 – Present</span>
+            <ul>
+              <li>Managed multi-industry social media, paid campaigns, content planning, creative direction, reporting, and optimization.</li>
+              <li>Built Meta Ads strategies focused on leads, reservations, engagement, foot traffic, and sales.</li>
+              <li>Managed Conservatorio email campaigns in Brevo and Zoho CRM workflows; developed its Elementor website and recent landing pages with Nuxt, Vue, and Sanity.</li>
+              <li>Created StormWind LinkedIn Ads for demo bookings and newsletter downloads, and supported its email marketing and Google Ads campaigns.</li>
+              <li>Built <a href="https://calasol.com" target="_blank" rel="noopener noreferrer">calasol.com</a> in Elementor and supported B2B outreach for Single Point, SpaceTags, and iShift Cloud.</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Freelance Social Media and Ads Manager</h3>
+            <p class="company">Restaurant Accounts</p>
+            <span class="date">2022 – Aug 2026</span>
+            <ul>
+              <li>Managed Meta Ads and content strategies for Los Tacos de Villa, Cantina de Villa, and El Pinche Gallo.</li>
+              <li>Increased reservations and visits through creative direction, segmentation, and campaign optimization.</li>
+            </ul>
+          </article>
+        </section>
+        <section aria-labelledby="skills-heading">
+          <h2 id="skills-heading">Skills</h2>
+          <ul class="skills">
+            <li>Meta, LinkedIn and Google Ads</li>
+            <li>Brevo and Zoho CRM</li>
+            <li>Social media management</li>
+            <li>WordPress and Elementor</li>
+            <li>Content planning</li>
+            <li>Nuxt, Vue and Sanity</li>
+            <li>Analytics and reporting</li>
+            <li>HTML, CSS and Git</li>
+          </ul>
+        </section>
+      </div>
+      <aside aria-label="Results, projects and additional skills">
+        <section class="results" aria-labelledby="results-heading">
+          <h2 id="results-heading">Key results</h2>
+          <ul>
+            <li>Generated qualified SaaS leads through optimized funnels.</li>
+            <li>Increased restaurant reservations and foot traffic.</li>
+            <li>Boosted sales through targeted Meta Ads.</li>
+          </ul>
+        </section>
+        <section aria-labelledby="projects-heading">
+          <h2 id="projects-heading">Web projects</h2>
+          <article class="project">
+            <h3>Conservatorio</h3>
+            <a href="https://conservatoriosa.com" target="_blank" rel="noopener noreferrer">conservatoriosa.com ↗</a>
+            <p>Elementor website, landing pages, Nuxt, Vue, Sanity, forms and integrations.</p>
+          </article>
+          <article class="project">
+            <h3>Calasol</h3>
+            <a href="https://calasol.com" target="_blank" rel="noopener noreferrer">calasol.com ↗</a>
+            <p>WordPress and Elementor website development.</p>
+          </article>
+        </section>
+        <section aria-labelledby="platforms-heading">
+          <h2 id="platforms-heading">Platforms</h2>
+          <ul class="platforms">
+            <li>Meta, LinkedIn and Google Ads</li>
+            <li>Google Analytics</li>
+            <li>Brevo and Zoho CRM</li>
+            <li>Zapier</li>
+            <li>Elementor Pro</li>
+            <li>Nuxt, Vue, Sanity</li>
+            <li>GitHub and GitLab</li>
+          </ul>
+        </section>
+        <section aria-labelledby="languages-heading">
+          <h2 id="languages-heading">Languages</h2>
+          <dl class="languages">
+            <div><dt>Spanish</dt><dd>Native</dd></div>
+            <div><dt>English</dt><dd>Advanced</dd></div>
+            <div><dt>Russian</dt><dd>Beginner</dd></div>
+          </dl>
+        </section>
+      </aside>
+    </div>
+    <footer class="footer"><span>Lizbeth Velázquez</span><span>Digital Marketing Assistant</span></footer>
+  </main>
+</body>
+</html>

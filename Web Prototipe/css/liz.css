@@ -1,0 +1,820 @@
+@font-face {
+	font-family: 'Liz';
+	src: url(../fonts/emuos.woff2) format('woff2'),
+	url(../fonts/emuos.woff) format('woff'),
+	url(../fonts/emuos.ttf) format('truetype'),
+	local('Microsoft Sans Serif');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'FIXEDSYS';
+	src: url(../fonts/fixedsys.woff2) format('woff2'),
+	url(../fonts/fixedsys.woff) format('woff'),
+	url(../fonts/fixedsys.ttf) format('truetype');
+	font-display: swap;
+}
+
+:root {
+	--taskbar-height: 30px;
+	--face: #c0c0c0;
+	--bevel-out: inset -1px -1px 0 #000, inset 1px 1px 0 #fff, inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf;
+	--bevel-in: inset -1px -1px 0 #fff, inset 1px 1px 0 #000, inset -2px -2px 0 #dfdfdf, inset 2px 2px 0 #808080;
+	--bevel-window: inset -1px -1px 0 #000, inset 1px 1px 0 #dfdfdf, inset -2px -2px 0 #808080, inset 2px 2px 0 #fff;
+	--bevel-field: inset -1px -1px 0 #fff, inset 1px 1px 0 #808080, inset -2px -2px 0 #dfdfdf, inset 2px 2px 0 #000;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+body {
+	font-family: 'Liz', 'Microsoft Sans Serif', Tahoma, sans-serif;
+	font-size: 13px;
+	color: #000;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+button {
+	font: inherit;
+	color: inherit;
+}
+
+/* region Desktop */
+
+.liz-desktop {
+	--desktop-icon-size: 48px;
+	position: fixed;
+	inset: 0 0 var(--taskbar-height) 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	padding: 6px;
+	background: #008080 url(../windows-95-remastered-1680x1050.png) center / cover no-repeat;
+	outline: none;
+}
+
+.liz-desktop-icon {
+	width: 74px;
+	height: 92px;
+	margin: 6px;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.liz-desktop-icon i.icon {
+	display: block;
+	width: var(--desktop-icon-size);
+	height: var(--desktop-icon-size);
+	margin: 0 auto 5px;
+	background: center / contain no-repeat;
+	pointer-events: none;
+}
+
+.liz-desktop-icon span {
+	display: inline-block;
+	padding: 0 2px;
+	line-height: 1.3;
+	text-shadow: #000 1px 1px 1px;
+	pointer-events: none;
+}
+
+.liz-desktop-icon.selected span {
+	position: relative;
+	background-color: #000080;
+	outline: 1px dotted #ffff7f;
+	outline-offset: -1px;
+}
+
+.liz-desktop-icon.selected i.icon {
+	filter: grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+}
+
+/* Icono de archivo de texto dibujado en SVG */
+.icon-file {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath d='M6 2h14l6 6v22H6z' fill='%23fff' stroke='%23000'/%3E%3Cpath d='M20 2v6h6' fill='%23c0c0c0' stroke='%23000'/%3E%3Cpath d='M9 12h14M9 15h14M9 18h14M9 21h14M9 24h10' stroke='%23000080'/%3E%3C/svg%3E") !important;
+}
+
+/* Icono de currículum dibujado en SVG */
+.icon-cv {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath d='M6 2h14l6 6v22H6z' fill='%23fff' stroke='%23000'/%3E%3Cpath d='M20 2v6h6' fill='%23c0c0c0' stroke='%23000'/%3E%3Crect x='9' y='6' width='7' height='8' fill='%2368518b'/%3E%3Ccircle cx='12.5' cy='8.5' r='1.8' fill='%23fff' shape-rendering='auto'/%3E%3Cpath d='M9.5 14c.6-2.2 1.7-3 3-3s2.4.8 3 3z' fill='%23fff' shape-rendering='auto'/%3E%3Cpath d='M9 17h14M9 20h14M9 23h14M9 26h9' stroke='%2368518b'/%3E%3C/svg%3E") !important;
+}
+
+/* Carpeta amarilla estilo Windows 98 */
+.icon-folder {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath d='M2 7h10l3 3h15v18H2z' fill='%23c8a400' stroke='%23000'/%3E%3Cpath d='M2 13h28v15H2z' fill='%23ffe14d' stroke='%23000'/%3E%3Cpath d='M3 14h26' stroke='%23fff6b0'/%3E%3C/svg%3E") !important;
+}
+
+/* Icono de imagen: marco con montaña y sol */
+.icon-image {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Crect x='3' y='5' width='26' height='22' fill='%23fff' stroke='%23000'/%3E%3Crect x='6' y='8' width='20' height='16' fill='%2387ceeb'/%3E%3Ccircle cx='20' cy='12' r='2.5' fill='%23ffd700' shape-rendering='auto'/%3E%3Cpath d='M6 24l6-8 4 5 3-3 7 6z' fill='%23228b22'/%3E%3C/svg%3E") !important;
+}
+
+/* Logo de Instagram 2010, recortado de sources/Instagram-Logo-2010.png */
+.icon-instagram {
+	background-image: url(../sources/instagram-icon-128.png) !important;
+}
+
+/* endregion */
+
+/* region Window */
+
+.liz-window {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	min-width: 200px;
+	min-height: 120px;
+	padding: 4px;
+	background-color: var(--face);
+	box-shadow: var(--bevel-window);
+	resize: both;
+	overflow: hidden;
+}
+
+.liz-window.minimized {
+	display: none;
+}
+
+.liz-window.maximized {
+	top: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: calc(100% - var(--taskbar-height)) !important;
+	resize: none;
+}
+
+.liz-window-titlebar {
+	display: flex;
+	align-items: center;
+	flex: none;
+	gap: 2px;
+	height: 18px;
+	padding: 0 2px;
+	margin-bottom: 2px;
+	background: linear-gradient(to right, #808080, #c0c0c0);
+	color: #d4d0c8;
+	font-weight: bold;
+	cursor: default;
+	touch-action: none;
+}
+
+.liz-window.active .liz-window-titlebar {
+	background: linear-gradient(to right, #0a246a, #a6caf0);
+	color: #fff;
+}
+
+.liz-window-icon {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+}
+
+.liz-window-icon:not([src]) {
+	background: center / contain no-repeat;
+}
+
+.liz-window-title {
+	flex: 1;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	line-height: 18px;
+}
+
+.liz-window-button {
+	position: relative;
+	width: 16px;
+	height: 14px;
+	padding: 0;
+	border: none;
+	background-color: var(--face);
+	box-shadow: var(--bevel-out);
+}
+
+.liz-window-button:active {
+	box-shadow: var(--bevel-in);
+}
+
+.liz-window-button-close {
+	margin-left: 2px;
+}
+
+/* Glifos de los botones dibujados con CSS (sin imágenes) */
+.glyph-minimize,
+.glyph-maximize,
+.glyph-close {
+	position: absolute;
+	inset: 0;
+	margin: auto;
+}
+
+.glyph-minimize {
+	width: 6px;
+	height: 2px;
+	top: 6px;
+	background: #000;
+}
+
+.glyph-maximize {
+	width: 9px;
+	height: 8px;
+	border: 1px solid #000;
+	border-top-width: 2px;
+}
+
+.maximized .glyph-maximize {
+	width: 7px;
+	height: 6px;
+	transform: translate(-1px, 1px);
+	box-shadow: 2px -2px 0 -1px var(--face), 2px -2px 0 0 #000;
+}
+
+.glyph-close {
+	width: 8px;
+	height: 7px;
+	background:
+		linear-gradient(45deg, transparent 43%, #000 43%, #000 57%, transparent 57%),
+		linear-gradient(-45deg, transparent 43%, #000 43%, #000 57%, transparent 57%);
+}
+
+.liz-window-content {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+}
+
+.liz-window-status {
+	flex: none;
+	margin-top: 2px;
+	padding: 2px 4px;
+	box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #808080;
+	font-size: 12px;
+}
+
+/* endregion */
+
+/* region Apps */
+
+.notepad-text,
+.readme-text {
+	flex: 1;
+	width: 100%;
+	min-height: 0;
+	margin: 0;
+	padding: 4px 6px;
+	border: none;
+	background: #fff;
+	box-shadow: var(--bevel-field);
+	font-family: 'FIXEDSYS', 'Courier New', monospace;
+	font-size: 14px;
+	line-height: 1.35;
+	resize: none;
+	outline: none;
+	overflow: auto;
+	user-select: text;
+	-webkit-user-select: text;
+}
+
+.readme-text {
+	white-space: pre-wrap;
+}
+
+.cv-frame {
+	flex: 1;
+	width: 100%;
+	min-height: 0;
+	border: none;
+	background: #fff;
+	box-shadow: var(--bevel-field);
+}
+
+.meme-image {
+	flex: 1;
+	width: 100%;
+	min-height: 0;
+	object-fit: contain;
+	background: #808080;
+	box-shadow: var(--bevel-field);
+}
+
+.memes-empty {
+	margin: auto;
+	padding: 12px;
+	text-align: center;
+}
+
+.readme-text a {
+	color: #0000ee;
+}
+
+.readme-text a:visited {
+	color: #551a8b;
+}
+
+.insta {
+	flex: 1;
+	min-height: 0;
+	padding: 10px;
+	background: #fff;
+	box-shadow: var(--bevel-field);
+	overflow: auto;
+}
+
+.insta a {
+	color: #000;
+	text-decoration: none;
+}
+
+.insta-profile h2 {
+	margin: 0;
+	font-size: 15px;
+	overflow-wrap: anywhere;
+}
+
+.insta-user {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.insta-user img {
+	width: 18px;
+	height: 18px;
+}
+
+.insta-user:hover span {
+	text-decoration: underline;
+}
+
+.insta hr {
+	margin: 8px 0 10px;
+	border: none;
+	border-top: 1px solid #808080;
+	border-bottom: 1px solid #fff;
+}
+
+.insta-info {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.insta-avatar {
+	flex: none;
+	width: 72px;
+	height: 72px;
+	padding: 3px;
+	border-radius: 50%;
+	background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #4f5bd5);
+}
+
+.insta-avatar img,
+.insta-avatar:not(:has(img:not([hidden])))::after {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 3px solid #fff;
+	border-radius: 50%;
+	object-fit: cover;
+	background: #c0c0c0;
+}
+
+/* Sin foto: silueta genérica */
+.insta-avatar:not(:has(img:not([hidden])))::after {
+	content: '';
+	background:
+		radial-gradient(circle at 50% 38%, #fff 0 18%, transparent 19%),
+		radial-gradient(ellipse at 50% 100%, #fff 0 38%, transparent 39%),
+		#a0a0a0;
+}
+
+.insta-avatar img[hidden] {
+	display: none;
+}
+
+.insta-side {
+	flex: 1;
+	min-width: 0;
+}
+
+.insta-stats {
+	display: flex;
+	justify-content: space-around;
+	margin: 0 0 8px;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.insta-stats[hidden],
+.insta-stats li[hidden] {
+	display: none;
+}
+
+.insta-stats strong {
+	display: block;
+	font-size: 14px;
+}
+
+.insta-stats span {
+	font-size: 11px;
+	color: #444;
+}
+
+.insta-follow,
+.insta-empty {
+	display: block;
+	padding: 3px 14px;
+	background-color: var(--face);
+	box-shadow: var(--bevel-out);
+	text-align: center;
+}
+
+.insta-follow:active,
+.insta-empty:active {
+	box-shadow: var(--bevel-in);
+}
+
+.insta-desc {
+	margin-top: 8px;
+	user-select: text;
+	-webkit-user-select: text;
+}
+
+.insta-desc:not(:has(p:not(:empty))) {
+	display: none;
+}
+
+.insta-name {
+	margin: 0;
+	font-weight: bold;
+}
+
+.insta-bio {
+	margin: 2px 0 0;
+	white-space: pre-line;
+}
+
+.insta-name:empty,
+.insta-bio:empty {
+	display: none;
+}
+
+.insta-feed {
+	margin-top: 10px;
+}
+
+/* Feed de 2 columnas cuadradas, como el widget de Elfsight */
+.insta-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.insta-post {
+	position: relative;
+	display: block;
+	aspect-ratio: 1;
+	overflow: hidden;
+	background: #c0c0c0;
+}
+
+.insta-post img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+
+.insta-post-type {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 20px;
+	height: 20px;
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.6));
+}
+
+.insta-post svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	fill: #fff;
+}
+
+.insta-post-overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	background: rgba(0, 0, 0, 0.45);
+	color: #fff;
+	font-weight: bold;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.insta-post-overlay span {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.insta-post-overlay svg {
+	width: 18px;
+	height: 18px;
+}
+
+.insta-post:hover .insta-post-overlay,
+.insta-post:focus-visible .insta-post-overlay {
+	opacity: 1;
+}
+
+.insta-post:hover img,
+.insta-post:focus-visible img {
+	transform: scale(1.04);
+}
+
+.insta-empty {
+	width: fit-content;
+	margin: 30px auto;
+}
+
+/* endregion */
+
+/* region Taskbar */
+
+.liz-taskbar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10000;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	height: var(--taskbar-height);
+	padding: 2px;
+	background-color: var(--face);
+	border-top: 1px solid #dfdfdf;
+	box-shadow: inset 0 1px 0 #fff;
+}
+
+.liz-taskbar button {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	height: 24px;
+	padding: 0 6px;
+	border: none;
+	background-color: var(--face);
+	box-shadow: var(--bevel-out);
+	white-space: nowrap;
+	cursor: default;
+}
+
+.liz-taskbar button:active,
+.liz-taskbar button.pressed {
+	box-shadow: var(--bevel-in);
+}
+
+.liz-taskbar img,
+.liz-taskbar i {
+	width: 16px;
+	height: 16px;
+	flex: none;
+	background: center / contain no-repeat;
+	object-fit: contain;
+}
+
+.liz-taskbar-start-button {
+	font-weight: bold;
+}
+
+.liz-taskbar-windows {
+	display: flex;
+	flex: 1;
+	gap: 3px;
+	min-width: 0;
+}
+
+.liz-taskbar-windows button {
+	flex: 0 1 160px;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.liz-taskbar-windows button.pressed {
+	background-image: repeating-conic-gradient(#fff 0 25%, var(--face) 0 50%);
+	background-size: 2px 2px;
+	font-weight: bold;
+}
+
+.liz-taskbar-tray {
+	height: 24px;
+	padding: 0 10px;
+	line-height: 24px;
+	box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #808080;
+}
+
+/* endregion */
+
+/* region Start menu */
+
+.liz-start-menu {
+	position: fixed;
+	left: 2px;
+	bottom: calc(var(--taskbar-height) - 2px);
+	z-index: 10001;
+	display: flex;
+	min-width: 180px;
+	padding: 3px;
+	background-color: var(--face);
+	box-shadow: var(--bevel-window);
+}
+
+.liz-start-menu[hidden] {
+	display: none;
+}
+
+.liz-start-menu-banner {
+	width: 22px;
+	padding: 6px 0;
+	background: linear-gradient(to top, #000080, #1084d0);
+	color: #c0c0c0;
+	font-size: 16px;
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+}
+
+.liz-start-menu-banner b {
+	color: #fff;
+}
+
+.liz-start-menu ul {
+	flex: 1;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.liz-start-menu button {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	padding: 4px 20px 4px 6px;
+	border: none;
+	background: none;
+	text-align: left;
+	cursor: default;
+}
+
+.liz-start-menu button:hover,
+.liz-start-menu button:focus-visible {
+	background-color: #000080;
+	color: #fff;
+	outline: none;
+}
+
+.liz-start-menu img,
+.liz-start-menu i {
+	width: 24px;
+	height: 24px;
+	background: center / contain no-repeat;
+	object-fit: contain;
+}
+
+.liz-start-menu .separator {
+	margin: 3px 2px;
+	border-top: 1px solid #808080;
+	border-bottom: 1px solid #fff;
+}
+
+/* endregion */
+
+/* region Clippy */
+
+.clippy {
+	position: fixed;
+	right: 24px;
+	bottom: calc(var(--taskbar-height) + 16px);
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	touch-action: none;
+}
+
+.clippy[hidden] {
+	display: none;
+}
+
+/* Sprite: cada cuadro de 124x93 se elige con background-position desde el JS */
+.clippy-agent {
+	width: 124px;
+	height: 93px;
+	background: url(../clippy/agents/Clippy/map.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+
+/* Cuadros vacíos (entrada y salida de la animación) */
+.clippy-agent.blank {
+	background-image: none;
+}
+
+/* Sin datos de animación: imagen fija */
+.clippy-agent.static {
+	width: 110px;
+	height: 110px;
+	background: url(../sources/clippy.png) center / contain no-repeat;
+	filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.35));
+}
+
+.clippy-balloon {
+	position: relative;
+	max-width: 240px;
+	margin-bottom: 12px;
+	padding: 10px 12px;
+	background: #ffffe1;
+	border: 1px solid #000;
+	border-radius: 6px;
+	box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+.clippy-balloon[hidden] {
+	display: none;
+}
+
+/* Pico del globo apuntando hacia Clippy */
+.clippy-balloon::after,
+.clippy-balloon::before {
+	content: '';
+	position: absolute;
+	right: 40px;
+	border-style: solid;
+}
+
+.clippy-balloon::before {
+	bottom: -12px;
+	border-width: 12px 12px 0 0;
+	border-color: #000 transparent transparent;
+}
+
+.clippy-balloon::after {
+	bottom: -10px;
+	right: 41px;
+	border-width: 10px 10px 0 0;
+	border-color: #ffffe1 transparent transparent;
+}
+
+.clippy-balloon-text {
+	margin: 0 12px 8px 0;
+}
+
+.clippy-balloon-close {
+	position: absolute;
+	top: 2px;
+	right: 4px;
+	padding: 0 4px;
+	border: none;
+	background: none;
+	font-size: 14px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.clippy-balloon-next {
+	padding: 2px 10px;
+	border: none;
+	background-color: var(--face);
+	box-shadow: var(--bevel-out);
+	cursor: pointer;
+}
+
+.clippy-balloon-next:active {
+	box-shadow: var(--bevel-in);
+}
+
+/* endregion */

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="liz theme-windows-98" lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#3b6ea5" />
+		<title>Welcome to Liz</title>
+		<link rel="icon" type="image/svg+xml" href="sources/Windows_Logo_1995.svg" />
+		<link rel="stylesheet" href="css/liz.css" />
+	</head>
+	<body>
+		<!-- Escritorio: los iconos abren ventanas con doble clic (un toque en móvil) -->
+		<main class="liz-desktop" tabindex="-1">
+			<a class="liz-desktop-icon" href="#" data-app="notepad">
+				<i class="icon" style="background-image: url(sources/notepad-96.png);"></i>
+				<span>Notas</span>
+			</a>
+			<a class="liz-desktop-icon" href="#" data-app="cv">
+				<i class="icon icon-cv"></i>
+				<span>CV</span>
+			</a>
+			<a class="liz-desktop-icon" href="#" data-app="readme">
+				<i class="icon icon-file"></i>
+				<span>Readme.txt</span>
+			</a>
+			<a class="liz-desktop-icon" href="#" data-app="hobbies">
+				<i class="icon icon-file"></i>
+				<span>Hobbies.txt</span>
+			</a>
+			<a class="liz-desktop-icon" href="#" data-app="memes">
+				<i class="icon icon-folder"></i>
+				<span>memes</span>
+			</a>
+			<a class="liz-desktop-icon" href="#" data-app="instagram">
+				<i class="icon icon-instagram"></i>
+				<span>instagram.exe</span>
+			</a>
+			<a class="liz-desktop-icon" href="#" data-app="clippy">
+				<i class="icon" style="background-image: url(sources/clippy.png);"></i>
+				<span>Clippy</span>
+			</a>
+		</main>
+
+		<!-- Barra de tareas -->
+		<footer class="liz-taskbar">
+			<button class="liz-taskbar-start-button" type="button" aria-haspopup="true" aria-expanded="false">
+				<img src="sources/Windows_Logo_1995.svg" alt="" />Inicio
+			</button>
+			<div class="liz-taskbar-windows"></div>
+			<div class="liz-taskbar-tray"><time class="liz-taskbar-clock"></time></div>
+		</footer>
+
+		<!-- Menú Inicio -->
+		<nav class="liz-start-menu" hidden>
+			<div class="liz-start-menu-banner"><b>Liz</b></div>
+			<ul>
+				<li><button type="button" data-app="notepad"><img src="sources/notepad-96.png" alt="" />Notas</button></li>
+				<li><button type="button" data-app="cv"><i class="icon-cv"></i>CV</button></li>
+				<li><button type="button" data-app="readme"><i class="icon-file"></i>Leeme.txt</button></li>
+				<li><button type="button" data-app="hobbies"><i class="icon-file"></i>Hobbies.txt</button></li>
+				<li><button type="button" data-app="memes"><i class="icon-folder"></i>memes</button></li>
+				<li><button type="button" data-app="instagram"><i class="icon-instagram"></i>instagram.exe</button></li>
+				<li class="separator"></li>
+				<li><button type="button" data-app="clippy"><img src="sources/clippy.png" alt="" />Clippy</button></li>
+			</ul>
+		</nav>
+
+		<!-- Clippy -->
+		<aside class="clippy" hidden>
+			<div class="clippy-balloon">
+				<button class="clippy-balloon-close" type="button" title="Ocultar">×</button>
+				<p class="clippy-balloon-text"></p>
+				<button class="clippy-balloon-next" type="button">Otro consejo</button>
+			</div>
+			<div class="clippy-agent" role="img" aria-label="Clippy"></div>
+		</aside>
+
+		<!-- Plantillas de ventana: el JS las clona dentro de .liz-window -->
+		<template id="window-template">
+			<section class="liz-window" role="dialog">
+				<header class="liz-window-titlebar">
+					<img class="liz-window-icon" alt="" />
+					<span class="liz-window-title"></span>
+					<button type="button" class="liz-window-button" data-action="minimize" title="Minimizar">
+						<span class="glyph-minimize"></span>
+					</button>
+					<button type="button" class="liz-window-button" data-action="maximize" title="Maximizar">
+						<span class="glyph-maximize"></span>
+					</button>
+					<button type="button" class="liz-window-button liz-window-button-close" data-action="close" title="Cerrar">
+						<span class="glyph-close"></span>
+					</button>
+				</header>
+				<div class="liz-window-content"></div>
+			</section>
+		</template>
+
+		<template id="app-notepad">
+			<textarea class="notepad-text" spellcheck="false" placeholder="Escribe tus notas aquí..."></textarea>
+			<div class="liz-window-status"><span class="notepad-status">Las notas se guardan solas en este navegador.</span></div>
+		</template>
+
+		<template id="app-cv">
+			<iframe class="cv-frame" src="liz cv/index.html" title="CV de Lizbeth Velázquez"></iframe>
+		</template>
+
+		<template id="app-readme">
+			<pre class="readme-text">¡Hola, soy Liz! 💕
+Web Design &amp; Development · Paid Media · Social Media
+(traducción: hago webs bonitas, anuncios que funcionan
+y posts que la gente sí se queda mirando)
+
+==============================================
+ SOBRE MÍ (versión corta, lo prometo)
+==============================================
+Combino diseño, tecnología y marketing para crear
+experiencias digitales con objetivos claros.
+Nada de "quedó lindo, pero no vende".
+
+He trabajado con marcas de SaaS, bienes raíces,
+gastronomía, hotelería, retail y servicios legales.
+Sí, abogados también: todo bien, todo legal. ⚖️
+
+¿La misión? Siempre la misma: más captación,
+más reservas y más ventas.
+
+==============================================
+ LO QUE HAGO
+==============================================
+🎨 Diseño y desarrollo web
+   Sitios y landing pages donde la identidad visual,
+   la funcionalidad y la conversión por fin se llevan
+   bien (terapia de pareja incluida).
+
+📈 Paid Media y Social Media
+   Campañas digitales, estrategia de contenido y
+   dirección creativa. O sea: que tu marca aparezca
+   donde tiene que aparecer, y no en el olvido.
+
+✉️ Email marketing y automatización
+   Campañas de email, flujos de CRM e integraciones.
+   Los robots trabajan, yo me tomo un café. ☕
+
+==============================================
+ MI CAJA DE HERRAMIENTAS 🧰
+==============================================
+Diseño y desarrollo:
+  WordPress · Elementor · Nuxt · Vue · Sanity
+  HTML · CSS · Git
+
+Marketing y automatización:
+  Meta Ads · LinkedIn Ads · Google Ads
+  Google Analytics · Brevo · Zoho CRM · Zapier
+
+==============================================
+ PROYECTOS WEB (los que sí puedo enseñar)
+==============================================
+» <a href="https://conservatoriosa.com" target="_blank" rel="noopener noreferrer">Conservatorio</a>
+  Sitio web, landing pages, formularios e integraciones
+  Elementor · Nuxt · Vue · Sanity
+
+» <a href="https://calasol.com" target="_blank" rel="noopener noreferrer">Calasol</a>
+  Diseño y desarrollo web
+  WordPress · Elementor
+
+----------------------------------------------
+Diseñar con intención. Comunicar con claridad.
+Medir para mejorar.
+
+¿Hablamos? → <a href="mailto:lizbethvelazquezest@gmail.com">lizbethvelazquezest@gmail.com</a>
+----------------------------------------------
+
+P.D. Este escritorio funciona de verdad:
+  • Doble clic en un icono para abrirlo.
+  • Arrastra las ventanas desde su barra de título.
+  • Clippy sabe cosas. Hazle clic.
+
+Escritorio inspirado en EmuOS (emupedia.net).
+</pre>
+		</template>
+
+		<template id="app-hobbies">
+			<pre class="readme-text">HOBBIES.TXT
+Cosas que hago cuando no estoy discutiendo con un píxel
+==============================================
+
+☕ Tomar café
+   Combustible oficial de este escritorio.
+   Sin café, no sobrevivo.
+   
+
+📚 Leer
+   No se si siempre hay un libro en curso pero eso es lo que se intenta.
+   Pensando en que sera lo proximo que lea.
+
+🎬 Mirar series y películas
+   "Un capítulo más y me duermo."
+   (Spoiler: nunca es uno más.)
+
+🧉 Tomar mate en el parque en un día soleado
+   Termo, mate, solcito y pasto.
+   Mi configuración de fábrica.
+
+🧠 Aprender cosas nuevas
+   La curiosidad siempre gana. Y si es algo que puedo aplicar en mi trabajo, mejor.
+
+🥸 Gamer y Otaku in disguise.
+   Me gusta jugar y ver anime, pero actualmente ninguno me define.  
+
+==============================================
+Nivel de batería: [■■■■■■■■□□] 80 % café
+</pre>
+		</template>
+
+		<template id="app-instagram">
+			<div class="insta">
+				<!-- Mismo orden que el perfil de wetlegband.com: usuario, línea, avatar + estadísticas, descripción, feed -->
+				<header class="insta-profile">
+					<h2>
+						<a class="insta-user" target="_blank" rel="noopener noreferrer"><img src="sources/instagram-icon-128.png" alt="" /><span></span></a>
+					</h2>
+					<hr />
+					<div class="insta-info">
+						<div class="insta-avatar"><img alt="" hidden /></div>
+						<div class="insta-side">
+							<ul class="insta-stats" hidden>
+								<li data-stat="posts"><strong></strong><span>publicaciones</span></li>
+								<li data-stat="followers"><strong></strong><span>seguidores</span></li>
+								<li data-stat="following"><strong></strong><span>seguidos</span></li>
+							</ul>
+							<a class="insta-follow" target="_blank" rel="noopener noreferrer">Seguir</a>
+						</div>
+					</div>
+					<div class="insta-desc">
+						<p class="insta-name"></p>
+						<p class="insta-bio"></p>
+					</div>
+				</header>
+				<div class="insta-feed"></div>
+			</div>
+			<div class="liz-window-status"><span>Los enlaces se abren en Instagram, en una pestaña nueva.</span></div>
+		</template>
+
+		<audio class="sound-chord" src="sounds/chord.wav" preload="auto"></audio>
+
+		<script src="clippy/agents/Clippy/agent.js"></script>
+		<script src="memes/memes.js"></script>
+		<script src="js/liz.js"></script>
+	</body>
+</html>
