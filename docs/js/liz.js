@@ -611,11 +611,11 @@
 		var text = root.querySelector('.clippy-balloon-text');
 		var chord = document.querySelector('.sound-chord');
 		var tips = [
-			'Maybe, im your next employee! Wanna see my cv? uwu',
-			'El comeback que nadie pidió, pero todos/as necesitaban. ¿CV, Ig o un cafécito?',
-			'Parece que estás por descubrir a tu próxima empleada. ¿Te enseño su CV?'
+			'Maybe, im your next employee! Wanna see my cv?',
+			'El comeback que nadie esperaba, pero todos/as necesitaban. ¿cv, ig o un email?',
+			'Algo retro dentro de tanto modernismo. ¿Quieres ver mi cv?',
 		];
-		var goodbye = 'Me voy del chat, no de tu vida. Cuando quieras, me llamas. byeeesss';
+		var goodbye = 'Byeeesss diva! Nos vemos en tu próximo proyecto.';
 		var leaving = false;
 		var index = 0;
 
