@@ -35,6 +35,14 @@
 				<i class="icon icon-instagram"></i>
 				<span>instagram.exe</span>
 			</a>
+			<a class="liz-desktop-icon" href="#" data-app="chat">
+				<i class="icon" style="background-image: url(sources/chat-icon.png);"></i>
+				<span>messenger</span>
+			</a>
+			<a class="liz-desktop-icon" href="#" data-app="ares">
+				<i class="icon" style="background-image: url(sources/ares-icon.png);"></i>
+				<span>Ares</span>
+			</a>
 			<a class="liz-desktop-icon" href="#" data-app="clippy">
 				<i class="icon" style="background-image: url(sources/clippy.png);"></i>
 				<span>Clippy</span>
@@ -60,6 +68,8 @@
 				<li><button type="button" data-app="hobbies"><i class="icon-file"></i>Hobbies.txt</button></li>
 				<li><button type="button" data-app="memes"><i class="icon-folder"></i>memes</button></li>
 				<li><button type="button" data-app="instagram"><i class="icon-instagram"></i>instagram.exe</button></li>
+<li><button type="button" data-app="ares"><img src="sources/ares-icon.png" alt="" />Ares</button></li>
+				<li><button type="button" data-app="chat"><img src="sources/chat-icon.png" alt="" />messenger</button></li>
 				<li class="separator"></li>
 				<li><button type="button" data-app="clippy"><img src="sources/clippy.png" alt="" />Clippy</button></li>
 			</ul>
@@ -98,6 +108,21 @@
 		<template id="app-notepad">
 			<textarea class="notepad-text" spellcheck="false" placeholder="Escribe tus notas aquí..."></textarea>
 			<div class="liz-window-status"><span class="notepad-status">Las notas se guardan solas en este navegador.</span></div>
+		</template>
+
+		<template id="app-chat">
+			<div class="retro-chat">
+				<div class="chat-menubar">Archivo &nbsp; Editar &nbsp; Ver &nbsp; Contactos</div>
+				<div class="chat-contact"><label>Conversación <select aria-label="Elegir conversación"></select></label><span>● Chats guardados</span></div>
+				<div class="chat-transcript" tabindex="0" aria-label="Conversación guardada"></div>
+				<div class="chat-format" aria-hidden="true"><span>A</span> &nbsp; <b>A</b> &nbsp; │ &nbsp; <b>B</b> &nbsp; <i>I</i> &nbsp; <u>U</u> &nbsp; │ &nbsp; <u>link</u> &nbsp; ☺</div>
+				<div class="chat-compose"></div>
+				<div class="chat-footer"><span class="chat-avatar" aria-hidden="true">☺</span><button type="button" disabled>Enviar</button></div>
+			</div>
+		</template>
+
+		<template id="app-ares">
+			<iframe title="Playlist de Spotify en Ares" data-testid="embed-iframe" style="border-radius:12px; border:0; flex-shrink:0" src="https://open.spotify.com/embed/playlist/51AEcy2XnkAytTDV8OX19S?utm_source=generator&amp;si=3b5251bf518f4eff" width="100%" height="352" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 		</template>
 
 		<template id="app-cv">

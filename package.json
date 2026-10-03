@@ -1,0 +1,28 @@
+{
+  "name": "lizvcest",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite docs --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizvcest/Lizvcest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lizvcest/Lizvcest/issues"
+  },
+  "homepage": "https://github.com/lizvcest/Lizvcest#readme",
+  "devDependencies": {
+    "vite": "^8.3.2"
+  }
+}

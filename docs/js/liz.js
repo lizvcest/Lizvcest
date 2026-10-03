@@ -66,6 +66,19 @@
 			height: 480,
 			init: initInstagram
 		},
+		chat: {
+			title: 'messenger',
+			icon: 'sources/chat-icon.png',
+			width: 540,
+			height: 460,
+			init: initChat
+		},
+		ares: {
+			title: 'Ares',
+			icon: 'sources/ares-icon.png',
+			width: 560,
+			height: 410
+		},
 		memes: {
 			launch: openMemes
 		},
@@ -73,6 +86,42 @@
 			launch: function () { clippy.show(); }
 		}
 	};
+
+	// Conversación prearmada: editá los nombres y mensajes acá.
+	var CHAT_CONVERSATIONS = [
+		{ name: 'Team chat', messages: [
+			['Alex', "Hi, I noticed you didn't reply to my messages on Odoo."],
+			['Liz', "Hey! Are we using Odoo? I've been messaging you on Slack."],
+			['Sam', "Odoo??? Slack?? I thought we were on Teams!"]
+		] }
+	];
+
+	function initChat(win) {
+		var select = win.querySelector('.chat-contact select');
+		var transcript = win.querySelector('.chat-transcript');
+		CHAT_CONVERSATIONS.forEach(function (chat, index) {
+			var option = document.createElement('option');
+			option.value = index;
+			option.textContent = chat.name;
+			select.appendChild(option);
+		});
+		function renderChat() {
+			var chat = CHAT_CONVERSATIONS[Number(select.value)];
+			transcript.replaceChildren();
+			chat.messages.forEach(function (message) {
+				var line = document.createElement('p');
+				var name = document.createElement('strong');
+				name.className = message[0] === 'Liz' ? 'chat-self' : 'chat-other';
+				name.textContent = message[0] + ': ';
+				line.appendChild(name);
+				line.appendChild(document.createTextNode(message[1]));
+				transcript.appendChild(line);
+			});
+			transcript.scrollTop = 0;
+		}
+		select.addEventListener('change', renderChat);
+		renderChat();
+	}
 
 	var desktop = document.querySelector('.liz-desktop');
 	var taskbarWindows = document.querySelector('.liz-taskbar-windows');
@@ -420,71 +469,147 @@
 	// region Memes
 
 	// La lista de imágenes está en memes/memes.js (window.LIZ_MEMES).
-	var MEMES_FOLDER = 'memes/';
-	var MEME_DELAY = 250;
+var MEMES_FOLDER = 'memes/';
+var MEME_DELAY = 250;
 
-	function openMemes() {
-		var memes = window.LIZ_MEMES || [];
+// Posición de cada imagen en el escritorio.
+var MEME_POSITIONS = [
+    { x: 0.04, y: 0.23 }, // a-veces-pienso
+    { x: 0.07, y: 0.09 }, // im-going-to-succeed
+    { x: 0.38, y: 0.02 }, // trabajando-desde-la-cama
+    { x: 0.11, y: 0.40 }, // diva-en-la-laptop
+    { x: 0.69, y: 0.02 }, // this-diva-needs-a-job
+    { x: 0.48, y: 0.37 }  // connect-with-me-on-linkedin
+];
 
-		if (!memes.length) {
-			openWindow('memes-empty', {
-				title: 'memes',
-				iconClass: 'icon-folder',
-				width: 380,
-				height: 150,
-				init: function (win) {
-					var message = document.createElement('p');
+function openMemes() {
+    var memes = window.LIZ_MEMES || [];
 
-					message.className = 'memes-empty';
-					message.textContent = 'Esta carpeta está vacía... por ahora. Los memes vienen en camino.';
-					win.querySelector('.liz-window-content').appendChild(message);
-				}
-			});
-			return;
-		}
+    if (!memes.length) {
+        openWindow('memes-empty', {
+            title: 'memes',
+            iconClass: 'icon-folder',
+            width: 380,
+            height: 150,
+            init: function (win) {
+                var message = document.createElement('p');
 
-		// Se van abriendo de a una, en cascada.
-		memes.forEach(function (file, i) {
-			setTimeout(function () {
-				openWindow('meme-' + i, {
-					title: file,
-					iconClass: 'icon-image',
-					width: 420,
-					height: 360,
-					init: function (win) { initMeme(win, file); }
-				});
-			}, i * MEME_DELAY);
-		});
-	}
+                message.className = 'memes-empty';
+                message.textContent =
+                    'Esta carpeta está vacía... por ahora. Los memes vienen en camino.';
 
-	function initMeme(win, file) {
-		var img = document.createElement('img');
+                win.querySelector('.liz-window-content')
+                    .appendChild(message);
+            }
+        });
 
-		img.className = 'meme-image';
-		img.alt = file;
-		img.draggable = false;
+        return;
+    }
 
-		// Ajusta la ventana al tamaño de la imagen, sin pasarse de la pantalla.
-		img.addEventListener('load', function () {
-			var maxW = Math.min(560, window.innerWidth - 40);
-			var maxH = Math.min(460, window.innerHeight - 120);
-			var scale = Math.min(1, maxW / img.naturalWidth, maxH / img.naturalHeight);
+    // Se abren de a una, distribuidas por el escritorio.
+    memes.forEach(function (file, i) {
+        setTimeout(function () {
+            openWindow('meme-' + i, {
+                title: file,
+                iconClass: 'icon-image',
+                width: 420,
+                height: 360,
+                init: function (win) {
+                    initMeme(win, file, i);
+                }
+            });
+        }, i * MEME_DELAY);
+    });
+}
 
-			win.style.width = Math.max(200, Math.round(img.naturalWidth * scale) + 12) + 'px';
-			win.style.height = Math.max(120, Math.round(img.naturalHeight * scale) + 32) + 'px';
-		});
+function positionMeme(win, i) {
+    var posicion = MEME_POSITIONS[i % MEME_POSITIONS.length];
+    var contenedor = win.offsetParent;
 
-		img.addEventListener('error', function () {
-			var message = document.createElement('p');
+    var ancho = contenedor
+        ? contenedor.clientWidth
+        : window.innerWidth;
 
-			message.className = 'memes-empty';
-			message.textContent = 'No encontré ' + MEMES_FOLDER + file;
-			img.replaceWith(message);
-		});
+    var alto = Math.min(
+        contenedor ? contenedor.clientHeight : window.innerHeight,
+        window.innerHeight - 48
+    );
 
-		img.src = encodeURI(MEMES_FOLDER + file);
-		win.querySelector('.liz-window-content').appendChild(img);
-	}
+    // Evita que las ventanas se salgan del escritorio.
+    var limiteX = Math.max(0, ancho - win.offsetWidth - 8);
+    var limiteY = Math.max(0, alto - win.offsetHeight - 8);
+
+    win.style.left = Math.min(
+        Math.round(ancho * posicion.x),
+        limiteX
+    ) + 'px';
+
+    win.style.top = Math.min(
+        Math.round(alto * posicion.y),
+        limiteY
+    ) + 'px';
+}
+
+function initMeme(win, file, i) {
+    var img = document.createElement('img');
+
+    img.className = 'meme-image';
+    img.alt = file;
+    img.draggable = false;
+
+    // Ajusta la ventana al tamaño de la imagen.
+    img.addEventListener('load', function () {
+        var maxW = Math.max(
+            1,
+            Math.min(560, window.innerWidth - 40)
+        );
+
+        var maxH = Math.max(
+            1,
+            Math.min(460, window.innerHeight - 120)
+        );
+
+        var scale = Math.min(
+            1,
+            maxW / img.naturalWidth,
+            maxH / img.naturalHeight
+        );
+
+        win.style.width = Math.max(
+            200,
+            Math.round(img.naturalWidth * scale) + 12
+        ) + 'px';
+
+        win.style.height = Math.max(
+            120,
+            Math.round(img.naturalHeight * scale) + 32
+        ) + 'px';
+
+        // Posiciona la ventana después de ajustar su tamaño.
+        requestAnimationFrame(function () {
+            positionMeme(win, i);
+        });
+    });
+
+    img.addEventListener('error', function () {
+        var message = document.createElement('p');
+
+        message.className = 'memes-empty';
+        message.textContent =
+            'No encontré ' + MEMES_FOLDER + file;
+
+        img.replaceWith(message);
+
+        requestAnimationFrame(function () {
+            positionMeme(win, i);
+        });
+    });
+
+    win.querySelector('.liz-window-content')
+        .appendChild(img);
+
+    img.src = encodeURI(MEMES_FOLDER + file);
+}
 
 	// endregion
 
@@ -611,11 +736,10 @@
 		var text = root.querySelector('.clippy-balloon-text');
 		var chord = document.querySelector('.sound-chord');
 		var tips = [
-			'Maybe, im your next employee! Wanna see my cv?',
-			'El comeback que nadie esperaba, pero todos/as necesitaban. ¿cv, ig o un email?',
-			'Algo retro dentro de tanto modernismo. ¿Quieres ver mi cv?',
+			'Hi! How can I help you?',
+			'Hey! What are you looking for? Your next employee?',
 		];
-		var goodbye = 'Byeeesss diva! Nos vemos en tu próximo proyecto.';
+		var goodbye = 'Bye for now! Hope to see you on your next project!';
 		var leaving = false;
 		var index = 0;
 
